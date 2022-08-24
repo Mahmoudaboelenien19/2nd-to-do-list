@@ -15,24 +15,60 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 60vh;
+  height: 100vh;
   flex-direction: column;
-  gap: 40px;
+  /* gap: 40px; */
 }
 
 .input {
-  width: 400px;
-  height: 40px;
+  width: 600px;
+  height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
-margin-bottom:20px;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+/* #inst-cont {
+  overflow: hidden;
+  width: 600px;
+  height: 30px;
+} */
+
+.instructions {
+  width: 600px;
+  height: 30px;
+  background-color: rgba(201, 5, 5, 0.534);
+  margin: 5px 0;
+  text-align: center;
+  transform: translateY(100px);
+  color: white;
+}
+
+.animated {
+  animation: animate 4s linear forwards infinite;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateY(100px);
+  }
+
+  20%,
+  80% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(100px);
+  }
 }
 
 input {
   padding-left: 20px;
-  width: 300px;
   height: 40px;
+  width: 500px;
   outline: none;
   border: none;
   border-top-left-radius: 5px;
@@ -49,44 +85,150 @@ button {
   border-left: 2px solid black;
 }
 
+#btn {
+  width: 400px;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2px;
+
+}
+
+#btn .done-state {
+  width: 120px;
+  height: 40px;
+  color: white;
+  font-size: 12px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#btn .done-state .done,
+#btn .done-state .undone {
+  display: inline-block;
+  width: 100%;
+  height: 20px;
+
+}
+
+#btn button {
+  border-radius: 5px;
+}
+
 .tasks {
   width: 400px;
   height: 200px;
   overflow: auto;
-  background-color: beige;
+  overflow-x: hidden;
+  background: linear-gradient(210deg, rgb(0, 0, 66), wheat);
+  border-radius: 10px;
 
 }
 
 .added {
   max-width: 400px;
-  height: 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: rgba(255, 255, 255, .2);
+  height: 40px;
+  display: grid;
+  background-color: white;
   margin-bottom: 3px;
+  grid-template-areas:
+    "content icon"
+    "t icon";
+}
+
+.added .content {
+  width: 300px;
+  height: 20px;
+  grid-area: content;
+}
+
+.added .icons {
+  width: 100px;
+  padding-right: 20px;
+  grid-area: icon;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.added .time {
+  height: 10px;
+  grid-area: t;
+  width: 300px;
+  font-size: 10px;
+  padding-left: 20px;
+  opacity: .6;
 }
 
 .added span {
   padding-left: 20px;
 }
 
-
-.added .icons {
-  padding-right: 20px;
+.added .icons #update {
+  position: relative;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background-color: rgb(25, 160, 115);
+  color: white;
+  border-radius: 5px;
   display: flex;
-  justify-content: flex-end;
-  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
 .added .icons input {
   max-height: 15px;
-  width: 20px;
+  width: 15px;
 }
-
 
 span.Done {
   text-decoration: line-through;
   text-decoration-color: red;
   opacity: .4;
+}
+
+.added .icons .inpp,
+.added .icons .deleteSpan {
+  position: relative;
+}
+
+.added .icons .deleteSpan i {
+  font-size: 15px;
+}
+
+.added .icons .inpp,
+.added .icons .deleteSpan {
+  padding: 0;
+  margin: 0;
+  max-height: 15px;
+  width: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.added .icons #update span,
+.added .icons .inpp span,
+.added .icons .deleteSpan span {
+  width: auto;
+  padding: 0;
+  position: absolute;
+  top: -15px;
+  left: -20%;
+  font-size: 10px;
+  background-color: rgba(0, 0, 0, .2);
+  display: none;
+  color: white;
+  border-radius: 2px;
+}
+
+.added .icons #update:hover span,
+.added .icons .deleteSpan:hover span,
+.added .icons .inpp:hover span {
+  display: block;
+
 }
